@@ -1,0 +1,1 @@
+.wordgrid{border-collapse:collapse;table-layout:fixed}.wordgrid tr td{border:1px solid #000;width:20px;min-width:20px;height:20px}.wordgrid button{background:transparent;border:none;outline:none;display:block;height:inherit;width:inherit;cursor:pointer;align-items:center}.wordgrid button.clicked{background-color:#d3d3d3}.wordgrid button.changed{background-color:#008000}

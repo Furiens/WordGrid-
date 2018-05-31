@@ -1,0 +1,48 @@
+﻿@model WordGrid.Models.GridViewModel
+
+@{
+    ViewData["Title"] = "Word Grid";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/StyleSheet.min.css" />
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-ui/effect.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <script>
+        function updateCell(cellId, newChar) {
+            var cell = document.getElementById(cellId);
+            cell.textContent = newChar;
+            cell.classList.remove('clicked');
+            cell.classList.add('changed');
+            $(cell).removeClass('changed', { duration: 400 });
+            cell.disabled = false;
+        }
+
+        function onClick(e) {
+            var cell = e.target || e.srcElement;
+            if (cell.tagName != "BUTTON")
+                return;
+            cell.disabled = true;
+            cell.classList.add('clicked');
+            $.post("Grid/Advance/", { id: cell.id }, function (data, status) { updateCell(data.id, data.char); });
+        }
+    </script>
+</head>
+<body>
+    <table class="wordgrid" onclick="onClick(event)">
+        @foreach (var row in Model.Rows)
+        {
+            <tr>
+                @foreach (var cell in row)
+                {
+                    <td><button id="@cell.Id">@cell.Char</button></td>}
+            </tr>
+        }
+    </table>
+</body>
+</html>
+

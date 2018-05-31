@@ -1,0 +1,31 @@
+﻿.wordgrid {
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+
+.wordgrid tr td {
+    border: 1px solid black;
+    width: 20px;
+    min-width:20px;
+    height: 20px;
+}
+
+.wordgrid button {
+    background: transparent;
+    border: none;
+    outline: none;
+    display: block;
+    height: inherit;
+    width: inherit;
+    cursor: pointer;
+    align-items:center;
+}
+
+.wordgrid button.clicked {
+    background-color:lightgray;
+    
+}
+
+.wordgrid button.changed {
+    background-color: green;
+}
